@@ -3,7 +3,7 @@ import colors from "colors"
 import dotenv from "dotenv"
 import morgan from "morgan"
 import { connectDB } from "./config/db.js"
-
+import authRoutes from "./routes/authRoutes.js"
 const app= express()
 //config import mo
 dotenv.config()
@@ -13,6 +13,8 @@ connectDB()
 //middleware
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.use("/api/auth", authRoutes)
 
 
 
